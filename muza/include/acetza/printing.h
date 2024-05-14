@@ -1,3 +1,5 @@
 #pragma once
 
-void az_print_long_with_comas(long number);
+#include "acetza/types.h"
+
+void az_print_u64(u64_t number);

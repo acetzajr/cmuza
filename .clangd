@@ -35,7 +35,8 @@
       ],
       "Remove": [
         "readability-magic-numbers",
-        "misc-no-recursion"
+        "misc-no-recursion",
+        "bugprone-easily-swappable-parameters"
       ]
     }
   }

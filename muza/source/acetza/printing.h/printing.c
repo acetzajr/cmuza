@@ -1,12 +1,14 @@
 #include "acetza/printing.h"
 
+#include "acetza/types.h"
+
 #include <stdio.h>
 
-void az_print_long_with_comas(long n) {
-  if (n < 1000) {
-    printf("%ld", n);
+void az_print_u64(u64_t number) {
+  if (number < 1000) {
+    printf("%ld", number);
     return;
   }
-  az_print_long_with_comas(n / 1000);
-  printf(",%03ld", n % 1000);
+  az_print_u64(number / 1000);
+  printf(",%03ld", number % 1000);
 }

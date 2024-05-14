@@ -1,9 +1,9 @@
 import sys
 import time
-from py.build import build as build_
-from py.init import init as init_, check_in_options
-from py.clean import clean as clean_
-from py.run import run as run_
+from pyman.build import build as build_
+from pyman.init import init as init_, check_in_options
+from pyman.clean import clean as clean_
+from pyman.run import run as run_
 
 FORMAT = "{:,.3f}"
 

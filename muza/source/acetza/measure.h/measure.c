@@ -15,8 +15,8 @@ void measure(void (*fun)()) {
   long seconds = stop.tv_sec - start.tv_sec;
   long nano = stop.tv_nsec - start.tv_nsec;
   printf("> Running time [seconds: ");
-  az_print_u64(seconds);
+  az_u64_print(seconds);
   printf(", nano: ");
-  az_print_u64(nano);
+  az_u64_print(nano);
   printf("]\n");
 }

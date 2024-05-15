@@ -17,6 +17,7 @@
     "ShowAKA": "Yes"
   },
   "Diagnostics": {
+    "UnusedIncludes": "Strict",
     "MissingIncludes": "Strict",
     "ClangTidy": {
       "FastCheckFilter": "None",
@@ -38,7 +39,8 @@
         "misc-no-recursion",
         "bugprone-easily-swappable-parameters",
         "concurrency-mt-unsafe",
-        "cert-flp30-c"
+        "cert-flp30-c",
+        "bugprone-casting-through-void"
       ]
     }
   }

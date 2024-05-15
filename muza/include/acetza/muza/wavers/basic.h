@@ -1,20 +1,26 @@
 #pragma once
 
-#include "acetza/muza/functions/primitives.h"
+#include "acetza/muza/types.h"
 #include "acetza/muza/wave.h"
-#include "acetza/types.h"
 
-struct BasicWaver {
+struct WvBasic {
   mz_primitive_t primitive;
-  f64_t frequency;
-  f64_t duration;
-  f64_t amplitude;
-  u64_t channels;
-  u64_t frame_rate;
+  mz_frequency_t frequency;
+  mz_duration_t duration;
+  mz_amplitude_t amplitude;
+  mz_channels_t channels;
+  mz_frame_rate_t frame_rate;
 };
 
-typedef struct BasicWaver wv_basic_t;
+typedef struct WvBasic mz_basic_t;
 
-void mz_basic_default(wv_basic_t *basic);
+extern mz_basic_t mz_basic_default;
 
-void mz_basic_wave(wv_basic_t *basic, mz_wave_t *wave);
+void mz_basic_build(mz_basic_t *basic, mz_primitive_t primitive,
+                    mz_frequency_t frequency, mz_duration_t duration,
+                    mz_amplitude_t amplitude, mz_channels_t channels,
+                    mz_frame_rate_t frame_rate);
+
+void mz_basic_copy(mz_basic_t *basic, mz_basic_t *other);
+
+void mz_basic_wave(mz_basic_t *basic, mz_wave_t *wave);

@@ -13,6 +13,6 @@ void mz_wave_with_duration(mz_wave_t *wave, f64_t duration, u64_t channels,
   wave->samples = malloc(sizeof(f64_t) * wave->frames * channels);
 }
 
-f64_t *mz_wave_get_sample(mz_wave_t *wave, u64_t frame, u64_t channel) {
+f64_t *mz_wave_sample(mz_wave_t *wave, u64_t frame, u64_t channel) {
   return &wave->samples[frame * wave->channels + channel];
 }

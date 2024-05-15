@@ -36,7 +36,9 @@
       "Remove": [
         "readability-magic-numbers",
         "misc-no-recursion",
-        "bugprone-easily-swappable-parameters"
+        "bugprone-easily-swappable-parameters",
+        "concurrency-mt-unsafe",
+        "cert-flp30-c"
       ]
     }
   }

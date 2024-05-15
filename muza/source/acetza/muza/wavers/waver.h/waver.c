@@ -6,7 +6,7 @@
 #include "acetza/muza/wavers/enveloper.h"
 #include "acetza/panic.h"
 
-mz_waver_t mz_waver_default = {MZ_BASIC, &mz_basic_default};
+mz_waver_t mz_waver_default = {MZ_BASIC, &mz_basic_ref};
 
 void mz_waver_build(mz_waver_t *waver, wv_type_t type, void *ptr) {
   waver->type = type;

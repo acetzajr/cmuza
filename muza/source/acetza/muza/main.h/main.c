@@ -8,6 +8,6 @@
 void muza() {
   printf("Hello muza\n");
   mz_wave_t wave;
-  mz_harmonizer_wave(&mz_harmonizer_default, &wave);
+  mz_harmonizer_wave(&mz_harmonizer_ref, &wave);
   mz_wave_save(&wave, "tmp/wave.wav");
 }

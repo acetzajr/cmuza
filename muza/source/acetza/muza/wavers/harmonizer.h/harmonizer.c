@@ -1,20 +1,14 @@
 #include "acetza/muza/wavers/harmonizer.h"
 
-#include "acetza/muza/functions/numberers.h"
 #include "acetza/muza/types.h"
 #include "acetza/muza/wave.h"
 #include "acetza/muza/wavers/waver.h"
 
-mz_harmonizer_t mz_harmonizer_default = {&mz_waver_default, &mz_waver_default,
-                                         7, mz_numberers_saw};
-
-void mz_harmonizer_build(mz_harmonizer_t *harmonizer, mz_waver_t *fundamental,
-                         mz_waver_t *harmonic, mz_depth_t depth,
-                         mz_numberer_t numberer) {
-  harmonizer->fundamental = fundamental;
-  harmonizer->harmonic = harmonic;
-  harmonizer->depth = depth;
-  harmonizer->numberer = numberer;
+void mz_harmonizer_init(mz_harmonizer_t *harmonizer) {
+  harmonizer->fundamental = mz_harmonizer_ref.fundamental;
+  harmonizer->harmonic = mz_harmonizer_ref.harmonic;
+  harmonizer->depth = mz_harmonizer_ref.depth;
+  harmonizer->numberer = mz_harmonizer_ref.numberer;
 }
 
 void mz_harmonizer_wave(mz_harmonizer_t *harmonizer, mz_wave_t *wave) {

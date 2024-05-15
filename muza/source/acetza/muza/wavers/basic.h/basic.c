@@ -1,23 +1,16 @@
 #include "acetza/muza/wavers/basic.h"
 
-#include "acetza/muza/functions/primitives.h"
-#include "acetza/muza/types.h"
 #include "acetza/muza/wave.h"
 #include "acetza/types.h"
 #include <math.h>
 
-mz_basic_t mz_basic_default = {mz_primitives_sin, 360.0, 1.0, 1.0, 2, 44'100};
-
-void mz_basic_build(mz_basic_t *basic, mz_primitive_t primitive,
-                    mz_frequency_t frequency, mz_duration_t duration,
-                    mz_amplitude_t amplitude, mz_channels_t channels,
-                    mz_frame_rate_t frame_rate) {
-  basic->primitive = primitive;
-  basic->frequency = frequency;
-  basic->duration = duration;
-  basic->amplitude = amplitude;
-  basic->channels = channels;
-  basic->frame_rate = frame_rate;
+void mz_basic_init(mz_basic_t *basic) {
+  basic->primitive = mz_basic_ref.primitive;
+  basic->frequency = mz_basic_ref.frequency;
+  basic->duration = mz_basic_ref.duration;
+  basic->amplitude = mz_basic_ref.amplitude;
+  basic->channels = mz_basic_ref.channels;
+  basic->frame_rate = mz_basic_ref.frame_rate;
 }
 
 void mz_basic_wave(mz_basic_t *basic, mz_wave_t *wave) {

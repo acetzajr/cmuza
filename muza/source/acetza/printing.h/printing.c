@@ -25,11 +25,11 @@ void az_rational_print(const az_rational_t *ration) {
 }
 
 void az_rational_print_mz(const az_rational_t *ration) {
-  printf("[ ");
+  printf("[");
   printf("%3ld", ration->numerator);
-  printf(" / ");
+  printf("/");
   printf("%3ld", ration->denominator);
-  printf(" ]");
+  printf("]");
 }
 
 u64_t az_u64_print_str_inner(u64_t number, char *str, u64_t printed) {

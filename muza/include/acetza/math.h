@@ -6,12 +6,10 @@
 
 extern f64_t az_epsilon;
 
-struct AzRational {
+typedef struct {
   u64_t numerator;
   u64_t denominator;
-};
-
-typedef struct AzRational az_rational_t;
+} az_rational_t;
 
 extern az_rational_t mz_rational_1_1;
 extern az_rational_t mz_rational_1_2;

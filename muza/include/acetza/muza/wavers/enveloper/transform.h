@@ -4,20 +4,16 @@
 #include "acetza/muza/wave.h"
 #include "acetza/muza/wavers/enveloper.h"
 
-struct MzTransformUntil {
+typedef struct {
   mz_time_t time;
   mz_amplitude_t amplitude;
-};
+} mz_transform_until_t;
 
-struct MzTransformResult {
+typedef struct {
   mz_bool_t disrupted;
   mz_time_t time;
   mz_amplitude_t amplitude;
-};
-
-typedef struct MzTransformUntil mz_transform_until_t;
-
-typedef struct MzTransformResult mz_transform_result_t;
+} mz_transform_result_t;
 
 mz_transform_until_t mz_transform_until_release(mz_enveloper_t *enveloper,
                                                 mz_wave_t *wave,

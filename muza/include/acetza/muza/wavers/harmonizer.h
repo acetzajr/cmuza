@@ -4,14 +4,12 @@
 #include "acetza/muza/wave.h"
 #include "acetza/muza/wavers/waver.h"
 
-struct WvHarmonizer {
+typedef struct {
   mz_waver_t *fundamental;
   mz_waver_t *harmonic;
   mz_depth_t depth;
   mz_numberer_t numberer;
-};
-
-typedef struct WvHarmonizer mz_harmonizer_t;
+} mz_harmonizer_t;
 
 extern mz_harmonizer_t mz_harmonizer_ref;
 

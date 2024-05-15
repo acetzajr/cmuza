@@ -2,9 +2,11 @@
 
 #include "acetza/muza/types.h"
 #include "acetza/panic.h"
+#include "acetza/types.h"
 
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 
 void mz_wave_resize(mz_wave_t *wave, mz_size_t frames) {
   wave->frames = frames;
@@ -42,4 +44,13 @@ void mz_wave_normalize(mz_wave_t *wave) {
   for (mz_index_t index = 0; index < wave->frames * wave->channels; ++index) {
     wave->samples[index] /= max;
   }
+}
+
+void mz_wave_clone(mz_wave_t *src, mz_wave_t *dst) {
+  dst->frames = src->frames;
+  dst->channels = src->channels;
+  dst->frame_rate = src->frame_rate;
+  mz_size_t size = sizeof(f64_t) * dst->frames * dst->channels;
+  dst->samples = malloc(size);
+  memcpy(dst->samples, src->samples, size);
 }

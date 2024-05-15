@@ -3,16 +3,12 @@
 #include "acetza/muza/types.h"
 #include "acetza/muza/wave.h"
 
-enum MzWaverType { MZ_WAVER, MZ_BASIC, MZ_ENVELOPER, MZ_HARMONIZER };
+typedef enum { MZ_WAVER, MZ_BASIC, MZ_ENVELOPER, MZ_HARMONIZER } wv_type_t;
 
-typedef enum MzWaverType wv_type_t;
-
-struct MzWaver {
+typedef struct {
   wv_type_t type;
   void *waver;
-};
-
-typedef struct MzWaver mz_waver_t;
+} mz_waver_t;
 
 extern mz_waver_t mz_waver_default;
 

@@ -4,7 +4,7 @@
 #include "acetza/muza/wave.h"
 #include "acetza/muza/wavers/waver.h"
 
-struct WvEnveloper {
+typedef struct {
   mz_waver_t *waver;
   mz_attack_t attack;
   mz_hold_t hold;
@@ -14,9 +14,7 @@ struct WvEnveloper {
   mz_transformer_t attack_transformer;
   mz_transformer_t decay_transformer;
   mz_transformer_t release_transformer;
-};
-
-typedef struct WvEnveloper mz_enveloper_t;
+} mz_enveloper_t;
 
 extern mz_enveloper_t mz_enveloper_ref;
 

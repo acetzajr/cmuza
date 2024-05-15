@@ -20,3 +20,18 @@ void mz_wave_add(mz_wave_t *wave, mz_wave_t *other, mz_time_t time,
     }
   }
 }
+
+void mz_wave_add_mod(mz_wave_t *wave, mz_wave_t *other, mz_time_t time,
+                     mz_amplitude_t amplitude) {
+  mz_count_t channels = MIN(wave->channels, other->channels);
+  for (mz_index_t
+           other_frame = 0,
+           frame = mz_time_to_frame(time, wave->frame_rate) % wave->frames;
+       other_frame < other->frames;
+       ++other_frame, frame = (frame + 1) % wave->frames) {
+    for (mz_index_t channel = 0; channel < channels; ++channel) {
+      *mz_wave_sample(wave, frame, channel) +=
+          *mz_wave_sample(other, other_frame, channel) * amplitude;
+    }
+  }
+}

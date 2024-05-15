@@ -3,7 +3,7 @@
 #include "acetza/muza/types.h"
 #include "acetza/muza/wave.h"
 
-enum MzWaverType { MZ_BASIC, MZ_ENVELOPER, MZ_HARMONIZER };
+enum MzWaverType { MZ_WAVER, MZ_BASIC, MZ_ENVELOPER, MZ_HARMONIZER };
 
 typedef enum MzWaverType wv_type_t;
 

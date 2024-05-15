@@ -6,8 +6,7 @@
 #include "acetza/types.h"
 #include <math.h>
 
-mz_basic_t mz_basic_default = {
-    mz_primitives_saw, 360.0, 1.0, 1.0, 2, 44'100};
+mz_basic_t mz_basic_default = {mz_primitives_sin, 360.0, 1.0, 1.0, 2, 44'100};
 
 void mz_basic_build(mz_basic_t *basic, mz_primitive_t primitive,
                     mz_frequency_t frequency, mz_duration_t duration,
@@ -19,11 +18,6 @@ void mz_basic_build(mz_basic_t *basic, mz_primitive_t primitive,
   basic->amplitude = amplitude;
   basic->channels = channels;
   basic->frame_rate = frame_rate;
-}
-
-void mz_basic_copy(mz_basic_t *basic, mz_basic_t *other) {
-  mz_basic_build(basic, other->primitive, other->frequency, other->duration,
-                 other->amplitude, other->channels, other->frame_rate);
 }
 
 void mz_basic_wave(mz_basic_t *basic, mz_wave_t *wave) {

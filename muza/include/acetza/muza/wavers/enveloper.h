@@ -28,5 +28,3 @@ void mz_enveloper_build(mz_enveloper_t *enveloper, mz_waver_t *waver,
                         mz_transformer_t release_transformer);
 
 void mz_enveloper_wave(mz_enveloper_t *enveloper, mz_wave_t *wave);
-
-void mz_enveloper_copy(mz_enveloper_t *enveloper, mz_enveloper_t *other);

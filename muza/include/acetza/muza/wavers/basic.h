@@ -21,6 +21,4 @@ void mz_basic_build(mz_basic_t *basic, mz_primitive_t primitive,
                     mz_amplitude_t amplitude, mz_channels_t channels,
                     mz_frame_rate_t frame_rate);
 
-void mz_basic_copy(mz_basic_t *basic, mz_basic_t *other);
-
 void mz_basic_wave(mz_basic_t *basic, mz_wave_t *wave);

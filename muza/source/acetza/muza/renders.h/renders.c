@@ -1,7 +1,7 @@
-#include "acetza/muza/intervals.h"
-#include "acetza/muza/math.h"
 #include "acetza/muza/renders.h"
 
+#include "acetza/muza/intervals.h"
+#include "acetza/muza/math.h"
 #include "acetza/muza/synths/synth0.h"
 #include "acetza/muza/types.h"
 #include "acetza/muza/wave.h"
@@ -59,6 +59,7 @@ void mz_render_1() {
   mz_frequency_t base = 360.0;
   mz_time_t time = 0.0;
   mz_time_t step = 1.0 / 4.0;
+  synth.duration = step;
   for (mz_index_t i = 0; i < 3; ++i) {
     for (mz_index_t note = 0; note < 12; ++note, time += step) {
       {

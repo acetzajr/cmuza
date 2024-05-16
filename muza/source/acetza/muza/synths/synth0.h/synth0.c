@@ -9,8 +9,13 @@
 #include "acetza/muza/wavers/waver.h"
 
 void mz_synth0_init(mz_synth0_t *synth) {
-  mz_basic_initializer.primitive = mz_primitives_tri;
-  mz_harmonizer_initializer.numberer = mz_numberers_sqr;
+  mz_basic_initializer.primitive = mz_primitives_sin;
+  mz_harmonizer_initializer.numberer = mz_numberers_saw;
+  mz_enveloper_initializer.attack = 1.0 / 30.0;
+  mz_enveloper_initializer.hold = 1.0 / 30.0;
+  mz_enveloper_initializer.decay = 1.0 / 30.0;
+  mz_enveloper_initializer.sustain = 1.0 / 2.0;
+  mz_enveloper_initializer.release = 1.0 / 12.0;
   mz_basic_init(&synth->wavers.basic);
   mz_waver_init(&synth->generics.basic, MZ_BASIC, &synth->wavers.basic);
   mz_harmonizer_init(&synth->wavers.harmonizer, &synth->generics.basic,
@@ -29,7 +34,7 @@ void mz_synth0_wave(mz_synth0_t *synth, mz_wave_t *wave) {
   mz_waver_set_frequency(&synth->generics.enveloper, synth->frequency);
   mz_waver_set_duration(&synth->generics.enveloper, synth->duration);
   mz_waver_wave(&synth->generics.enveloper, wave);
-  // mz_wave_reverb(wave, 1, 7, 1.0 / 16.0, 1.0 / 2.0);
-  // mz_wave_normalize(wave);
+  mz_wave_reverb(wave, 1, 7, 1.0 / 16.0, 1.0 / 2.0);
+  mz_wave_normalize(wave);
   mz_wave_mul(wave, synth->amplitude);
 }

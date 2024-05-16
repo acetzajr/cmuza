@@ -23,3 +23,7 @@ void mz_rational_set(az_rational_t *ration, u64_t numerator,
   ration->denominator = denominator;
   mz_rational_norm(ration);
 }
+
+f64_t mz_rational_mul(az_rational_t *ration, f64_t factor) {
+  return az_rational_f64(ration) * factor;
+}

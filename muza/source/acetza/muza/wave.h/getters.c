@@ -15,3 +15,8 @@ mz_amplitude_t mz_wave_get_max(mz_wave_t *wave) {
   }
   return max;
 }
+
+mz_sample_t *mz_wave_sample(mz_wave_t *wave, mz_index_t frame,
+                            mz_index_t channel) {
+  return &wave->samples[frame * wave->channels + channel];
+}

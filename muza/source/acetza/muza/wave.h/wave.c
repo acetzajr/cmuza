@@ -1,18 +1,28 @@
 #include "acetza/muza/wave.h"
 
-#include "acetza/types.h"
+#include "acetza/muza/types.h"
+#include <stddef.h>
 #include <stdlib.h>
 
 void mz_wave_free(mz_wave_t *wave) { free(wave->samples); }
 
-void mz_wave_with_duration(mz_wave_t *wave, f64_t duration, u64_t channels,
-                           u64_t frame_rate) {
+void mz_wave_with_duration(mz_wave_t *wave, mz_duration_t duration,
+                           mz_channels_t channels, mz_frame_rate_t frame_rate) {
   wave->frames = mz_time_to_frame(duration, frame_rate);
   wave->channels = channels;
   wave->frame_rate = frame_rate;
-  wave->samples = malloc(sizeof(f64_t) * wave->frames * channels);
+  mz_size_t size = sizeof(mz_sample_t) * wave->frames * channels;
+  if (size == 0) {
+    wave->samples = NULL;
+    return;
+  }
+  wave->samples = malloc(size);
 }
 
-f64_t *mz_wave_sample(mz_wave_t *wave, u64_t frame, u64_t channel) {
-  return &wave->samples[frame * wave->channels + channel];
+void mz_wave_new(mz_wave_t *wave, mz_channels_t channels,
+                 mz_frame_rate_t frame_rate) {
+  wave->frames = 0;
+  wave->channels = channels;
+  wave->frame_rate = frame_rate;
+  wave->samples = NULL;
 }

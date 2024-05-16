@@ -7,9 +7,7 @@
 #include "acetza/muza/wavers/harmonizer.h"
 #include "acetza/panic.h"
 
-mz_waver_t mz_waver_default = {MZ_BASIC, &mz_basic_initializer};
-
-void mz_waver_build(mz_waver_t *waver, wv_type_t type, void *ptr) {
+void mz_waver_init(mz_waver_t *waver, wv_type_t type, void *ptr) {
   waver->type = type;
   waver->waver = ptr;
 }
@@ -69,6 +67,29 @@ void mz_waver_set_frequency(mz_waver_t *waver, mz_frequency_t frequency) {
   case MZ_HARMONIZER:
     mz_harmonizer_t *harmonizer = waver->waver;
     mz_waver_set_frequency(harmonizer->wavers.fundamental, frequency);
+    return;
+  default:
+    az_panic(1, "waver type with code '%d' not recognized", waver->type);
+  }
+}
+
+void mz_waver_set_duration(mz_waver_t *waver, mz_duration_t duration) {
+  switch (waver->type) {
+  case MZ_WAVER:
+    mz_waver_set_duration(waver->waver, duration);
+    return;
+  case MZ_BASIC:
+    mz_basic_t *basic = waver->waver;
+    basic->duration = duration;
+    return;
+  case MZ_ENVELOPER:
+    mz_enveloper_t *enveloper = waver->waver;
+    mz_waver_set_duration(enveloper->wavers.waver, duration);
+    return;
+  case MZ_HARMONIZER:
+    mz_harmonizer_t *harmonizer = waver->waver;
+    mz_waver_set_duration(harmonizer->wavers.fundamental, duration);
+    mz_waver_set_duration(harmonizer->wavers.harmonic, duration);
     return;
   default:
     az_panic(1, "waver type with code '%d' not recognized", waver->type);

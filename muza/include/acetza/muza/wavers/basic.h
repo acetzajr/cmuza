@@ -7,7 +7,6 @@ typedef struct {
   mz_primitive_t primitive;
   mz_frequency_t frequency;
   mz_duration_t duration;
-  mz_amplitude_t amplitude;
   mz_channels_t channels;
   mz_frame_rate_t frame_rate;
 } mz_basic_t;

@@ -22,6 +22,7 @@ typedef struct {
 
 extern mz_harmonizer_initializer_t mz_harmonizer_initializer;
 
-void mz_harmonizer_init(mz_harmonizer_t *harmonizer);
+void mz_harmonizer_init(mz_harmonizer_t *harmonizer, mz_waver_t *fundamental,
+                        mz_waver_t *harmonic);
 
 void mz_harmonizer_wave(mz_harmonizer_t *harmonizer, mz_wave_t *wave);

@@ -33,6 +33,6 @@ typedef struct {
 
 extern mz_enveloper_initializer_t mz_enveloper_initializer;
 
-void mz_enveloper_init(mz_enveloper_t *enveloper);
+void mz_enveloper_init(mz_enveloper_t *enveloper, mz_waver_t *waver);
 
 void mz_enveloper_wave(mz_enveloper_t *enveloper, mz_wave_t *wave);

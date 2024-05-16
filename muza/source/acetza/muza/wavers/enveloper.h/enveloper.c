@@ -4,12 +4,11 @@
 #include "acetza/muza/wave.h"
 #include "acetza/muza/wavers/enveloper/transform.h"
 #include "acetza/muza/wavers/waver.h"
-#include "acetza/panic.h"
 
 #include <stddef.h>
 
-void mz_enveloper_init(mz_enveloper_t *enveloper) {
-  enveloper->wavers.waver = NULL;
+void mz_enveloper_init(mz_enveloper_t *enveloper, mz_waver_t *waver) {
+  enveloper->wavers.waver = waver;
   enveloper->attack = mz_enveloper_initializer.attack;
   enveloper->hold = mz_enveloper_initializer.hold;
   enveloper->decay = mz_enveloper_initializer.decay;
@@ -21,9 +20,6 @@ void mz_enveloper_init(mz_enveloper_t *enveloper) {
 }
 
 void mz_enveloper_wave(mz_enveloper_t *enveloper, mz_wave_t *wave) {
-  if (enveloper->wavers.waver == NULL) {
-    az_panic(1, "enveloper waver is null");
-  }
   mz_waver_wave(enveloper->wavers.waver, wave);
   mz_duration_t duration = mz_wave_duration(wave);
   mz_transform_until_t until =

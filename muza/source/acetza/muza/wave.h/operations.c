@@ -41,8 +41,13 @@ void mz_wave_normalize(mz_wave_t *wave) {
   if (max == 0.0) {
     return;
   }
+  mz_amplitude_t amplitude = 1.0 / max;
+  mz_wave_mul(wave, amplitude);
+}
+
+void mz_wave_mul(mz_wave_t *wave, mz_amplitude_t amplitude) {
   for (mz_index_t index = 0; index < wave->frames * wave->channels; ++index) {
-    wave->samples[index] /= max;
+    wave->samples[index] *= amplitude;
   }
 }
 

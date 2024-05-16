@@ -11,6 +11,9 @@ typedef struct {
 
 // BUILD / FREE
 
+void mz_wave_new(mz_wave_t *wave, mz_channels_t channels,
+                 mz_frame_rate_t frame_rate);
+
 void mz_wave_with_duration(mz_wave_t *wave, mz_duration_t duration,
                            mz_channels_t channels, mz_frame_rate_t frame_rate);
 
@@ -30,6 +33,8 @@ mz_duration_t mz_wave_duration(mz_wave_t *wave);
 mz_amplitude_t mz_wave_get_max(mz_wave_t *wave);
 
 // OPERATIONS
+
+void mz_wave_mul(mz_wave_t *wave, mz_amplitude_t amplitude);
 
 void mz_wave_resize(mz_wave_t *wave, mz_size_t frames);
 

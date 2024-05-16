@@ -1,6 +1,8 @@
 #include "acetza/muza/wave.h"
 
 #include "acetza/muza/types.h"
+
+#include <stddef.h>
 #include <sys/param.h>
 
 void mz_wave_add(mz_wave_t *wave, mz_wave_t *other, mz_time_t time,
@@ -23,6 +25,9 @@ void mz_wave_add(mz_wave_t *wave, mz_wave_t *other, mz_time_t time,
 
 void mz_wave_add_mod(mz_wave_t *wave, mz_wave_t *other, mz_time_t time,
                      mz_amplitude_t amplitude) {
+  if (wave->samples == NULL) {
+    return;
+  }
   mz_count_t channels = MIN(wave->channels, other->channels);
   for (mz_index_t
            other_frame = 0,

@@ -7,11 +7,20 @@
 typedef struct {
   mz_waver_t *fundamental;
   mz_waver_t *harmonic;
+} mz_harmonizer_wavers_t;
+
+typedef struct {
+  mz_harmonizer_wavers_t wavers;
   mz_depth_t depth;
   mz_numberer_t numberer;
 } mz_harmonizer_t;
 
-extern mz_harmonizer_t mz_harmonizer_ref;
+typedef struct {
+  mz_depth_t depth;
+  mz_numberer_t numberer;
+} mz_harmonizer_initializer_t;
+
+extern mz_harmonizer_initializer_t mz_harmonizer_initializer;
 
 void mz_harmonizer_init(mz_harmonizer_t *harmonizer);
 

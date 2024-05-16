@@ -1,19 +1,14 @@
 #include "acetza/muza/renders.h"
 
-#include "acetza/muza/wave.h"
-#include "acetza/muza/wavers/enveloper.h"
+#include "acetza/muza/synths/synth0.h"
 
 #include <stdio.h>
 
 void mz_hello() { printf("Hello muza\n"); }
 
-void renderx0() {
-  printf("Hello renderx0\n");
-  mz_wave_t wave;
-  mz_enveloper_wave(&mz_enveloper_ref, &wave);
-  mz_wave_reverb(&wave, 1, 7, 1.0 / 12.0, 2.0 / 3.0);
-  mz_wave_normalize(&wave);
-  mz_wave_save(&wave, "tmp/wave.wav");
+void mz_renderx0() {
+  mz_synth0_t synth;
+  mz_synth0_init(&synth);
 }
 
 mz_render_t az_render_ref = mz_hello;

@@ -2,9 +2,9 @@
 
 #include "acetza/muza/functions/primitives.h"
 
-mz_basic_t mz_basic_ref = {.primitive = mz_primitives_sin,
-                           .frequency = 360.0,
-                           .duration = 1.0,
-                           .amplitude = 1.0,
-                           .channels = 2,
-                           .frame_rate = 44'100};
+mz_basic_initializer_t mz_basic_initializer = {.primitive = mz_primitives_sin,
+                                               .frequency = 360.0,
+                                               .duration = 1.0,
+                                               .amplitude = 1.0,
+                                               .channels = 2,
+                                               .frame_rate = 44'100};

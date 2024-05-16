@@ -7,7 +7,7 @@
 #include "acetza/muza/wavers/harmonizer.h"
 #include "acetza/panic.h"
 
-mz_waver_t mz_waver_default = {MZ_BASIC, &mz_basic_ref};
+mz_waver_t mz_waver_default = {MZ_BASIC, &mz_basic_initializer};
 
 void mz_waver_build(mz_waver_t *waver, wv_type_t type, void *ptr) {
   waver->type = type;
@@ -43,10 +43,10 @@ mz_frequency_t mz_waver_frequency(mz_waver_t *waver) {
     return basic->frequency;
   case MZ_ENVELOPER:
     mz_enveloper_t *enveloper = waver->waver;
-    return mz_waver_frequency(enveloper->waver);
+    return mz_waver_frequency(enveloper->wavers.waver);
   case MZ_HARMONIZER:
     mz_harmonizer_t *harmonizer = waver->waver;
-    return mz_waver_frequency(harmonizer->fundamental);
+    return mz_waver_frequency(harmonizer->wavers.fundamental);
   default:
     az_panic(1, "waver type with code '%d' not recognized", waver->type);
     return 0.0;
@@ -64,11 +64,11 @@ void mz_waver_set_frequency(mz_waver_t *waver, mz_frequency_t frequency) {
     return;
   case MZ_ENVELOPER:
     mz_enveloper_t *enveloper = waver->waver;
-    mz_waver_set_frequency(enveloper->waver, frequency);
+    mz_waver_set_frequency(enveloper->wavers.waver, frequency);
     return;
   case MZ_HARMONIZER:
     mz_harmonizer_t *harmonizer = waver->waver;
-    mz_waver_set_frequency(harmonizer->fundamental, frequency);
+    mz_waver_set_frequency(harmonizer->wavers.fundamental, frequency);
     return;
   default:
     az_panic(1, "waver type with code '%d' not recognized", waver->type);

@@ -5,12 +5,12 @@
 #include <math.h>
 
 void mz_basic_init(mz_basic_t *basic) {
-  basic->primitive = mz_basic_ref.primitive;
-  basic->frequency = mz_basic_ref.frequency;
-  basic->duration = mz_basic_ref.duration;
-  basic->amplitude = mz_basic_ref.amplitude;
-  basic->channels = mz_basic_ref.channels;
-  basic->frame_rate = mz_basic_ref.frame_rate;
+  basic->primitive = mz_basic_initializer.primitive;
+  basic->frequency = mz_basic_initializer.frequency;
+  basic->duration = mz_basic_initializer.duration;
+  basic->amplitude = mz_basic_initializer.amplitude;
+  basic->channels = mz_basic_initializer.channels;
+  basic->frame_rate = mz_basic_initializer.frame_rate;
 }
 
 void mz_basic_wave(mz_basic_t *basic, mz_wave_t *wave) {

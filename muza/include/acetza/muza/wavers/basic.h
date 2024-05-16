@@ -12,7 +12,9 @@ typedef struct {
   mz_frame_rate_t frame_rate;
 } mz_basic_t;
 
-extern mz_basic_t mz_basic_ref;
+typedef mz_basic_t mz_basic_initializer_t;
+
+extern mz_basic_initializer_t mz_basic_initializer;
 
 void mz_basic_init(mz_basic_t *basic);
 

@@ -14,8 +14,8 @@ void mz_synth0_init(mz_synth0_t *synth) {
   mz_enveloper_initializer.attack = 1.0 / 30.0;
   mz_enveloper_initializer.hold = 1.0 / 30.0;
   mz_enveloper_initializer.decay = 1.0 / 30.0;
-  mz_enveloper_initializer.sustain = 1.0 / 2.0;
-  mz_enveloper_initializer.release = 1.0 / 12.0;
+  mz_enveloper_initializer.sustain = 1.0 - 1.0 / 30.0;
+  mz_enveloper_initializer.release = 1.0 / 3.0;
   mz_basic_init(&synth->wavers.basic);
   mz_waver_init(&synth->generics.basic, MZ_BASIC, &synth->wavers.basic);
   mz_harmonizer_init(&synth->wavers.harmonizer, &synth->generics.basic,

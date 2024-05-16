@@ -56,7 +56,7 @@ void mz_render_1() {
   mz_wave_new(&wave, 2, 44'100);
   mz_synth0_t synth;
   mz_synth0_init(&synth);
-  mz_frequency_t base = 360.0;
+  mz_frequency_t base = 90.0;
   mz_time_t time = 0.0;
   mz_time_t step = 1.0 / 4.0;
   synth.duration = step;
